@@ -122,3 +122,27 @@ label {
 a {
     text-decoration: none;
 }
+/* Dashboard */
+
+.dashboard-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+}
+
+.dashboard-card .card-body {
+    padding: 30px;
+}
+
+.dashboard-card h1 {
+    font-size: 55px;
+}
+
+.table td {
+    vertical-align: middle;
+}

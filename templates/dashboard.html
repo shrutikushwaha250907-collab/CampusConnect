@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-2 text-primary" href="/">
+            CampusConnect
+        </a>
+
+        <div class="ms-auto">
+
+            <span class="me-3 fw-semibold">
+                Welcome, {{ username }} 👋
+            </span>
+
+            <a href="/logout" class="btn btn-danger">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- Dashboard -->
+
+<div class="container py-5">
+
+    <h1 class="fw-bold mb-4">
+        Student Dashboard
+    </h1>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>💡</h1>
+
+                    <h4 class="mt-3">
+                        Skills
+                    </h4>
+
+                    <p>
+                        Showcase and manage your skills.
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        View Skills
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>👥</h1>
+
+                    <h4 class="mt-3">
+                        Team Finder
+                    </h4>
+
+                    <p>
+                        Find teammates for projects.
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        Explore
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>📚</h1>
+
+                    <h4 class="mt-3">
+                        Notes
+                    </h4>
+
+                    <p>
+                        Upload and download study notes.
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card h-100">
+
+                <div class="card-body text-center">
+
+                    <h1>📖</h1>
+
+                    <h4 class="mt-3">
+                        Books
+                    </h4>
+
+                    <p>
+                        Exchange books with classmates.
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        Browse
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-md-6">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body">
+
+                    <h3 class="mb-3">
+                        Upcoming Events
+                    </h3>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            💻 Flask Workshop
+                        </li>
+
+                        <li class="list-group-item">
+                            🚀 Hackathon
+                        </li>
+
+                        <li class="list-group-item">
+                            🎤 Placement Seminar
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body">
+
+                    <h3 class="mb-3">
+                        Quick Statistics
+                    </h3>
+
+                    <table class="table">
+
+                        <tr>
+                            <td>Skills</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>Notes</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>Books</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>Teams</td>
+                            <td>0</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

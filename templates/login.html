@@ -8,61 +8,79 @@ Login
 
 <div class="container py-5">
 
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-<div class="col-md-5">
+        <div class="col-lg-5">
 
-<div class="login-card">
+            <div class="login-card">
 
-<h2 class="text-center mb-4">
+                <h2 class="text-center fw-bold mb-4">
+                    Welcome Back 👋
+                </h2>
 
-Welcome Back 👋
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
-</h2>
+                <form method="POST">
 
-<form>
+                    <div class="mb-3">
 
-<div class="mb-3">
+                        <label class="form-label">
+                            Username
+                        </label>
 
-<label>Email</label>
+                        <input
+                            type="text"
+                            name="username"
+                            class="form-control"
+                            placeholder="Enter Username"
+                            required>
 
-<input type="email" class="form-control">
+                    </div>
 
-</div>
+                    <div class="mb-4">
 
-<div class="mb-4">
+                        <label class="form-label">
+                            Password
+                        </label>
 
-<label>Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Enter Password"
+                            required>
 
-<input type="password" class="form-control">
+                    </div>
 
-</div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        Login
+                    </button>
 
-<button class="btn btn-primary w-100">
+                </form>
 
-Login
+                <p class="text-center mt-4">
 
-</button>
+                    Don't have an account?
 
-<p class="text-center mt-4">
+                    <a href="/register">
+                        Register
+                    </a>
 
-Don't have an account?
+                </p>
 
-<a href="/register">
+            </div>
 
-Register
+        </div>
 
-</a>
-
-</p>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 

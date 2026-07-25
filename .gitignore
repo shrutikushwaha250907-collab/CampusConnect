@@ -2,4 +2,4 @@ env/
 __pycache__/
 instance/database.db
 *.pyc
-.vscode/
+.vscode/git add .

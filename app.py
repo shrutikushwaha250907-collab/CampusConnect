@@ -10,6 +10,9 @@ app.config.from_object(Config)
 
 db.init_app(app)
 UPLOAD_FOLDER = os.path.join(app.root_path, "static", "uploads")
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 

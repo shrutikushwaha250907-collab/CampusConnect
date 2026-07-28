@@ -146,3 +146,40 @@ a {
 .table td {
     vertical-align: middle;
 }
+/* Dashboard */
+
+.dashboard-card{
+
+background:#ffffff;
+
+border:none;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+transition:0.3s;
+
+padding:20px;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 35px rgba(13,110,253,0.2);
+
+}
+
+.dashboard-card i{
+
+transition:0.3s;
+
+}
+
+.dashboard-card:hover i{
+
+transform:scale(1.15);
+
+}

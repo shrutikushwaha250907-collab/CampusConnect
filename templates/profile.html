@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row">
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="card shadow border-0 rounded-4 text-center p-4">
+
+                <img src="{{ url_for('static', filename=user.profile_image) }}"
+                     class="rounded-circle mx-auto mb-3"
+                     width="170"
+                     height="170"
+                     style="object-fit:cover; border:5px solid #0d6efd;">
+
+                <h3 class="fw-bold">
+                    {{ user.fullname }}
+                </h3>
+
+                <p class="text-muted mb-1">
+                    @{{ user.username }}
+                </p>
+
+                <hr>
+
+                <p>
+                    <strong>Email</strong><br>
+                    {{ user.email }}
+                </p>
+
+                <p>
+                    <strong>Branch</strong><br>
+                    {{ user.branch or "Not Added" }}
+                </p>
+
+                <p>
+                    <strong>Semester</strong><br>
+                    {{ user.semester or "Not Added" }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4 p-4">
+
+                <h2 class="fw-bold mb-4">
+
+                    Edit Profile
+
+                </h2>
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Branch
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="branch"
+                            class="form-control"
+                            value="{{ user.branch }}">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Semester
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="semester"
+                            class="form-control"
+                            value="{{ user.semester }}">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Skills
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="skills"
+                            class="form-control"
+                            value="{{ user.skills }}"
+                            placeholder="Python, Flask, C++, HTML">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Bio
+
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            name="bio">{{ user.bio }}</textarea>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            LinkedIn
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="linkedin"
+                            class="form-control"
+                            value="{{ user.linkedin }}">
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            GitHub
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="github"
+                            class="form-control"
+                            value="{{ user.github }}">
+
+                    </div>
+
+                    <button class="btn btn-primary btn-lg w-100">
+
+                        Save Profile
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

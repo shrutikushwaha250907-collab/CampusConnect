@@ -3,7 +3,6 @@ from models import db, User
 from config import Config
 
 app = Flask(__name__)
-
 app.config.from_object(Config)
 
 db.init_app(app)
@@ -52,6 +51,7 @@ def register():
 
     return render_template("register.html")
 
+
 # -------------------- Login --------------------
 
 @app.route("/login", methods=["GET", "POST"])
@@ -86,9 +86,46 @@ def dashboard():
     if "user" not in session:
         return redirect("/login")
 
+    user = User.query.filter_by(
+        username=session["user"]
+    ).first()
+
     return render_template(
         "dashboard.html",
+        user=user
+    )
+
+
+# -------------------- Profile --------------------
+
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    user = User.query.filter_by(
         username=session["user"]
+    ).first()
+
+    if request.method == "POST":
+
+        user.branch = request.form["branch"]
+        user.semester = request.form["semester"]
+        user.skills = request.form["skills"]
+        user.bio = request.form["bio"]
+        user.linkedin = request.form["linkedin"]
+        user.github = request.form["github"]
+
+        db.session.commit()
+
+        flash("Profile Updated Successfully!")
+
+        return redirect("/profile")
+
+    return render_template(
+        "profile.html",
+        user=user
     )
 
 
@@ -104,4 +141,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    

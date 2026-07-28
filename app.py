@@ -1,11 +1,19 @@
+import os
+from werkzeug.utils import secure_filename
+from flask import send_from_directory
 from flask import Flask, render_template, request, redirect, session, flash
-from models import db, User, Skill
+from models import db, User, Skill, Note, Event
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)
+UPLOAD_FOLDER = os.path.join(app.root_path, "static", "uploads")
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 with app.app_context():
     db.create_all()
@@ -193,6 +201,161 @@ def delete_skill(id):
     return redirect("/skills")
 
 
+# -------------------- Notes --------------------
+
+@app.route("/notes")
+def notes():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    all_notes = Note.query.all()
+
+    return render_template(
+        "notes.html",
+        notes=all_notes,
+        username=session["user"]
+    )
+
+
+@app.route("/upload-note", methods=["GET", "POST"])
+def upload_note():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        subject = request.form["subject"]
+
+        file = request.files["file"]
+
+        filename = secure_filename(file.filename)
+
+        upload_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+
+        print(upload_path)
+        print("UPLOAD FOLDER =", app.config["UPLOAD_FOLDER"])
+        print("EXISTS =", os.path.exists(app.config["UPLOAD_FOLDER"]))
+
+        file.save(upload_path)
+
+        note = Note(
+            title=title,
+            subject=subject,
+            filename=filename,
+            owner=session["user"]
+        )
+
+        db.session.add(note)
+        db.session.commit()
+
+        flash("Note Uploaded Successfully!")
+
+        return redirect("/notes")
+
+    return render_template("upload_note.html")
+
+
+@app.route("/download/<filename>")
+def download(filename):
+
+    return send_from_directory(
+        app.config["UPLOAD_FOLDER"],
+        filename,
+        as_attachment=True
+    )
+
+
+@app.route("/delete-note/<int:id>")
+def delete_note(id):
+
+    note = Note.query.get_or_404(id)
+
+    if note.owner == session["user"]:
+
+        path = os.path.join(
+            app.config["UPLOAD_FOLDER"],
+            note.filename
+        )
+
+        if os.path.exists(path):
+
+            os.remove(path)
+
+        db.session.delete(note)
+
+        db.session.commit()
+
+        flash("Note Deleted Successfully!")
+
+    return redirect("/notes")
+
+# -------------------- Events --------------------
+
+@app.route("/events")
+def events():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    all_events = Event.query.all()
+
+    return render_template(
+        "events.html",
+        events=all_events,
+        username=session["user"]
+    )
+
+
+@app.route("/add-event", methods=["GET", "POST"])
+def add_event():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        date = request.form["date"]
+        location = request.form["location"]
+        description = request.form["description"]
+
+        event = Event(
+            title=title,
+            date=date,
+            location=location,
+            description=description,
+            organizer=session["user"]
+        )
+
+        db.session.add(event)
+        db.session.commit()
+
+        flash("Event Added Successfully!")
+
+        return redirect("/events")
+
+    return render_template("add_event.html")
+
+
+@app.route("/delete-event/<int:id>")
+def delete_event(id):
+
+    if "user" not in session:
+        return redirect("/login")
+
+    event = Event.query.get_or_404(id)
+
+    if event.organizer == session["user"]:
+
+        db.session.delete(event)
+        db.session.commit()
+
+        flash("Event Deleted Successfully!")
+
+    return redirect("/events")
 
 # -------------------- Logout --------------------
 

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Campus Events{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">📅 Campus Events</h2>
+
+            <p class="text-muted">
+                Explore upcoming campus events.
+            </p>
+
+        </div>
+
+        <a href="/add-event" class="btn btn-warning btn-lg">
+            <i class="bi bi-plus-circle"></i>
+            Add Event
+        </a>
+
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row">
+
+        {% if events %}
+
+            {% for event in events %}
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card dashboard-card h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-primary fw-bold">
+                            {{ event.title }}
+                        </h4>
+
+                        <p><strong>Date:</strong> {{ event.date }}</p>
+
+                        <p><strong>Location:</strong> {{ event.location }}</p>
+
+                        <p>{{ event.description }}</p>
+
+                        <p><strong>Organizer:</strong> {{ event.organizer }}</p>
+
+                        {% if username == event.organizer %}
+
+                        <a href="/delete-event/{{ event.id }}"
+                           class="btn btn-danger btn-sm">
+
+                            Delete
+
+                        </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+
+                No events available.
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <a href="/dashboard" class="btn btn-outline-secondary">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+Upload Note
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center fw-bold mb-4">
+
+                        📄 Upload Study Notes
+
+                    </h2>
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+
+                                Note Title
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="form-control"
+                                placeholder="Example: Python Unit 1 Notes"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+
+                                Subject
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="subject"
+                                class="form-control"
+                                placeholder="Example: Python Programming"
+                                required>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                Choose PDF File
+
+                            </label>
+
+                            <input
+                                type="file"
+                                name="file"
+                                class="form-control"
+                                accept=".pdf"
+                                required>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100">
+
+                            <i class="bi bi-upload"></i>
+
+                            Upload Note
+
+                        </button>
+
+                    </form>
+
+                    <div class="text-center mt-4">
+
+                        <a href="/notes">
+
+                            ← Back to Notes
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

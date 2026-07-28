@@ -124,18 +124,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 📸 Screenshots
 
-You can add screenshots of:
-
-- Home Page
-- Login Page
-- Register Page
-- Dashboard
-- Skill Marketplace
-- Notes Upload
-
----
 
 ## 📖 Future Improvements
 

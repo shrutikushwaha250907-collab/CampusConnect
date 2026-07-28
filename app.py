@@ -16,6 +16,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 with app.app_context():
+    os.makedirs(app.instance_path, exist_ok=True)
     db.create_all()
 
 

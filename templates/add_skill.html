@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Skill
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center fw-bold mb-4">
+
+                        💡 Add New Skill
+
+                    </h2>
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+
+                                Skill Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="form-control"
+                                placeholder="Example: Python"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+
+                                Skill Level
+
+                            </label>
+
+                            <select
+                                name="level"
+                                class="form-select"
+                                required>
+
+                                <option value="">Select Level</option>
+
+                                <option>Beginner</option>
+
+                                <option>Intermediate</option>
+
+                                <option>Advanced</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                Description
+
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                name="description"
+                                rows="5"
+                                placeholder="Describe your experience with this skill..."
+                                required></textarea>
+
+                        </div>
+
+                        <button
+                            class="btn btn-primary btn-lg w-100">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            Add Skill
+
+                        </button>
+
+                    </form>
+
+                    <div class="text-center mt-4">
+
+                        <a href="/skills">
+
+                            ← Back to Skill Marketplace
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

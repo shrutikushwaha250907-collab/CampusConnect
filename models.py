@@ -15,8 +15,6 @@ class User(db.Model):
 
     password = db.Column(db.String(100), nullable=False)
 
-    # Student Profile
-
     branch = db.Column(db.String(100), default="")
 
     semester = db.Column(db.String(20), default="")
@@ -33,3 +31,16 @@ class User(db.Model):
         db.String(200),
         default="images/default-profile.png"
     )
+
+
+class Skill(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    title = db.Column(db.String(100), nullable=False)
+
+    level = db.Column(db.String(30), nullable=False)
+
+    description = db.Column(db.Text)
+
+    owner = db.Column(db.String(100))

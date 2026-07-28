@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, flash
-from models import db, User
+from models import db, User, Skill
 from config import Config
 
 app = Flask(__name__)
@@ -127,6 +127,71 @@ def profile():
         "profile.html",
         user=user
     )
+
+
+# -------------------- Skill Marketplace --------------------
+
+@app.route("/skills")
+def skills():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    all_skills = Skill.query.all()
+
+    return render_template(
+        "skills.html",
+        skills=all_skills,
+        username=session["user"]
+    )
+
+
+@app.route("/add-skill", methods=["GET", "POST"])
+def add_skill():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        level = request.form["level"]
+        description = request.form["description"]
+
+        new_skill = Skill(
+            title=title,
+            level=level,
+            description=description,
+            owner=session["user"]
+        )
+
+        db.session.add(new_skill)
+        db.session.commit()
+
+        flash("Skill Added Successfully!")
+
+        return redirect("/skills")
+
+    return render_template("add_skill.html")
+
+
+@app.route("/delete-skill/<int:id>")
+def delete_skill(id):
+
+    if "user" not in session:
+        return redirect("/login")
+
+    skill = Skill.query.get_or_404(id)
+
+    if skill.owner == session["user"]:
+
+        db.session.delete(skill)
+        db.session.commit()
+
+        flash("Skill Deleted!")
+
+    return redirect("/skills")
+
 
 
 # -------------------- Logout --------------------

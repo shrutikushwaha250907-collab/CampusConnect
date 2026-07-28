@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}
+Skill Marketplace
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                💡 Skill Marketplace
+            </h2>
+
+            <p class="text-muted">
+                Discover skills shared by CampusConnect students.
+            </p>
+
+        </div>
+
+        <a href="/add-skill" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i>
+            Add Skill
+        </a>
+
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row">
+
+        {% if skills %}
+
+            {% for skill in skills %}
+
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <div class="card dashboard-card h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold text-primary">
+                            {{ skill.title }}
+                        </h4>
+
+                        <span class="badge bg-success mb-3">
+                            {{ skill.level }}
+                        </span>
+
+                        <p>
+                            {{ skill.description }}
+                        </p>
+
+                        <hr>
+
+                        <p class="mb-2">
+
+                            <strong>Student:</strong>
+
+                            {{ skill.owner }}
+
+                        </p>
+
+                        {% if username == skill.owner %}
+
+                        <a href="/delete-skill/{{ skill.id }}"
+                           class="btn btn-danger btn-sm">
+
+                            Delete
+
+                        </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+
+                No skills added yet.
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <a href="/dashboard" class="btn btn-outline-secondary">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

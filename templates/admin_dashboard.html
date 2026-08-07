@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="fw-bold text-center mb-5">
+
+        👨‍💼 Admin Dashboard
+
+    </h1>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow text-center p-4">
+
+                <h3>👨‍🏫</h3>
+
+                <h4>Manage Teachers</h4>
+
+                <a href="/add-teacher" class="btn btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow text-center p-4">
+
+                <h3>📢</h3>
+
+                <h4>Announcements</h4>
+
+                <a href="/announcements" class="btn btn-success">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow text-center p-4">
+
+                <h3>📅</h3>
+
+                <h4>Manage Events</h4>
+
+                <a href="/events" class="btn btn-warning">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

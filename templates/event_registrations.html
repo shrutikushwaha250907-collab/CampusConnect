@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Event Registrations{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>📋 Registered Students</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <h4>{{ event.title }}</h4>
+
+            <p><strong>Date:</strong> {{ event.date }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+
+            <hr>
+
+            {% if registrations %}
+
+            <table class="table table-bordered table-striped">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+                        <th>Student Username</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for reg in registrations %}
+
+                    <tr>
+
+                        <td>{{ loop.index }}</td>
+
+                        <td>{{ reg.student }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-success">
+
+                Total Registrations :
+                <strong>{{ registrations|length }}</strong>
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-warning">
+
+                No students have registered yet.
+
+            </div>
+
+            {% endif %}
+
+            <a href="/events" class="btn btn-secondary">
+
+                ← Back to Events
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

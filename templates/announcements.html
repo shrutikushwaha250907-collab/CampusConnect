@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Announcements{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="d-flex justify-content-between mb-4">
+
+<h2>📢 Campus Announcements</h2>
+
+{% if user.role != "student" %}
+
+<a
+href="/add-announcement"
+class="btn btn-success">
+
++ New Announcement
+
+</a>
+
+{% endif %}
+
+</div>
+
+{% for a in announcements %}
+
+<div class="card shadow mb-4">
+
+<div class="card-body">
+
+<h4>{{ a.title }}</h4>
+
+<p>
+
+{{ a.message }}
+
+</p>
+
+<hr>
+
+<small class="text-muted">
+
+Posted by
+
+<b>{{ a.posted_by }}</b>
+
+on
+
+{{ a.date }}
+
+</small>
+
+</div>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-info">
+
+No announcements available.
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

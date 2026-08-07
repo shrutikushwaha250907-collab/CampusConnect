@@ -4,97 +4,214 @@
 
 {% block content %}
 
-<div class="container py-5">
+<div class="container py-4">
 
-    <div class="text-center mb-5">
+    <!-- Welcome Banner -->
+    <div class="p-5 mb-4 bg-primary text-white rounded-4 shadow">
 
-        <h1 class="fw-bold">
-            Welcome, {{ user.fullname }}
-        </h1>
+        <h2 class="fw-bold">
+            👋 Welcome, {{ user.fullname }}
+        </h2>
 
-        <p class="text-muted">
-            Your CampusConnect Dashboard
+        <p class="mb-0">
+            Welcome to CampusConnect — your one-stop platform for campus updates,
+            learning resources, skills and events.
         </p>
 
     </div>
 
+    <!-- Quick Access Cards -->
+
     <div class="row g-4">
 
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-3">
 
-            <div class="dashboard-card">
+            <div class="card shadow border-0 h-100">
 
-                <i class="bi bi-person-circle"></i>
+                <div class="card-body text-center">
 
-                <h4>Profile</h4>
+                    <i class="bi bi-person-circle display-4 text-primary"></i>
 
-                <p>Update your personal details.</p>
+                    <h4 class="mt-3">Profile</h4>
 
-                <a href="/profile" class="btn btn-primary w-100">
+                    <p class="text-muted">
+                        Manage your personal information.
+                    </p>
 
-                    Open
+                    <a href="/profile" class="btn btn-primary w-100">
+                        Open
+                    </a>
 
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-
-            <div class="dashboard-card">
-
-                <i class="bi bi-lightbulb"></i>
-
-                <h4>Skills</h4>
-
-                <p>Share your skills with students.</p>
-
-                <a href="/skills" class="btn btn-success w-100">
-
-                    Open
-
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-3">
 
-            <div class="dashboard-card">
+            <div class="card shadow border-0 h-100">
 
-                <i class="bi bi-journal-bookmark"></i>
+                <div class="card-body text-center">
 
-                <h4>Notes</h4>
+                    <i class="bi bi-lightbulb display-4 text-success"></i>
 
-                <p>Upload and download study notes.</p>
+                    <h4 class="mt-3">Skills</h4>
 
-                <a href="/notes" class="btn btn-warning w-100">
+                    <p class="text-muted">
+                        Share your skills with classmates.
+                    </p>
 
-                    Open
+                    <a href="/skills" class="btn btn-success w-100">
+                        Open
+                    </a>
 
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-3">
 
-            <div class="dashboard-card">
+            <div class="card shadow border-0 h-100">
 
-                <i class="bi bi-calendar-event"></i>
+                <div class="card-body text-center">
 
-                <h4>Events</h4>
+                    <i class="bi bi-journal-bookmark display-4 text-warning"></i>
 
-                <p>View and create campus events.</p>
+                    <h4 class="mt-3">Notes</h4>
 
-                <a href="/events" class="btn btn-danger w-100">
+                    <p class="text-muted">
+                        Access and upload study notes.
+                    </p>
 
-                    Open
+                    <a href="/notes" class="btn btn-warning w-100">
+                        Open
+                    </a>
 
-                </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-calendar-event display-4 text-danger"></i>
+
+                    <h4 class="mt-3">Events</h4>
+
+                    <p class="text-muted">
+                        Participate in campus events.
+                    </p>
+
+                    <a href="/events" class="btn btn-danger w-100">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Second Row -->
+
+    <div class="row mt-5">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white">
+
+                📢 Latest Announcements
+
+            </div>
+
+            <div class="card-body">
+
+                {% if announcements %}
+
+                    {% for a in announcements %}
+
+                    <div class="border-bottom mb-3 pb-2">
+
+                        <h5>{{ a.title }}</h5>
+
+                        <p>{{ a.message }}</p>
+
+                        <small class="text-muted">
+
+                            Posted by <b>{{ a.posted_by }}</b>
+
+                            on {{ a.date }}
+
+                        </small>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p class="text-muted">
+
+                        No announcements available yet.
+
+                    </p>
+
+                    <small class="text-secondary">
+
+                        Teachers and Admin announcements will appear here.
+
+                    </small>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        <div class="col-lg-4">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-info text-white">
+
+                    ⚡ Quick Actions
+
+                </div>
+
+                <div class="card-body d-grid gap-2">
+
+                    <a href="/add-skill" class="btn btn-outline-success">
+                        + Add Skill
+                    </a>
+
+                    <a href="/upload-note" class="btn btn-outline-warning">
+                        + Upload Note
+                    </a>
+
+                    <a href="/add-event" class="btn btn-outline-danger">
+                        + Create Event
+                    </a>
+
+                    <a href="/profile" class="btn btn-outline-primary">
+                        Edit Profile
+                    </a>
+
+                </div>
 
             </div>
 

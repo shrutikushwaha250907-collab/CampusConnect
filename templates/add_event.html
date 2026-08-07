@@ -16,7 +16,8 @@
 
                     <h2 class="text-center fw-bold mb-4">
 
-                        📅 Add Campus Event
+                        <i class="bi bi-calendar-plus"></i>
+                        Add Campus Event
 
                     </h2>
 
@@ -24,54 +25,71 @@
 
                         <div class="mb-3">
 
-                            <label class="form-label">Event Title</label>
+                            <label class="form-label fw-semibold">
+                                Event Title
+                            </label>
 
                             <input
                                 type="text"
                                 name="title"
                                 class="form-control"
+                                placeholder="Enter event title"
                                 required>
 
                         </div>
 
                         <div class="mb-3">
 
-                            <label class="form-label">Date</label>
+                            <label class="form-label fw-semibold">
+                                Event Date
+                            </label>
 
                             <input
                                 type="date"
+                                id="eventDate"
                                 name="date"
                                 class="form-control"
                                 required>
 
+                            <small class="text-muted">
+                                You can only select today or a future date.
+                            </small>
+
                         </div>
 
                         <div class="mb-3">
 
-                            <label class="form-label">Location</label>
+                            <label class="form-label fw-semibold">
+                                Location
+                            </label>
 
                             <input
                                 type="text"
                                 name="location"
                                 class="form-control"
+                                placeholder="Auditorium, Seminar Hall, Lab..."
                                 required>
 
                         </div>
 
                         <div class="mb-4">
 
-                            <label class="form-label">Description</label>
+                            <label class="form-label fw-semibold">
+                                Description
+                            </label>
 
                             <textarea
                                 name="description"
                                 rows="5"
                                 class="form-control"
+                                placeholder="Describe the event..."
                                 required></textarea>
 
                         </div>
 
                         <button class="btn btn-warning btn-lg w-100">
 
+                            <i class="bi bi-plus-circle"></i>
                             Add Event
 
                         </button>
@@ -80,7 +98,7 @@
 
                     <div class="text-center mt-4">
 
-                        <a href="/events">
+                        <a href="/events" class="text-decoration-none">
 
                             ← Back to Events
 
@@ -97,5 +115,13 @@
     </div>
 
 </div>
+
+<script>
+
+const today = new Date().toISOString().split("T")[0];
+
+document.getElementById("eventDate").min = today;
+
+</script>
 
 {% endblock %}

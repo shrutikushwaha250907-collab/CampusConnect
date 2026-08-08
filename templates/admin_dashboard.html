@@ -6,67 +6,381 @@
 
 <div class="container py-5">
 
-    <h1 class="fw-bold text-center mb-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
 
-        👨‍💼 Admin Dashboard
+        <h1 class="fw-bold">
+            👑 Admin Dashboard
+        </h1>
 
-    </h1>
+        <p class="text-muted">
+            Manage CampusConnect
+        </p>
+
+    </div>
+
+
+    <!-- Statistics -->
+    <div class="row g-4 mb-5">
+
+        <!-- Students -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-people-fill display-5 text-primary"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_students }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Students
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Teachers -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-person-workspace display-5 text-success"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_teachers }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Teachers
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Events -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-calendar-event display-5 text-warning"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_events }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Events
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Notes -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-journal-text display-5 text-secondary"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_notes }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Study Notes
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Skills -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-lightbulb-fill display-5 text-info"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_skills }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Skills
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Announcements -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <i class="bi bi-megaphone-fill display-5 text-danger"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_announcements }}
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Announcements
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Administration -->
+    <h3 class="fw-bold mb-4">
+        ⚙️ Administration
+    </h3>
+
 
     <div class="row g-4">
 
-        <div class="col-md-4">
 
-            <div class="card shadow text-center p-4">
+        <!-- Add Teacher -->
+        <div class="col-md-6 col-lg-4">
 
-                <h3>👨‍🏫</h3>
+            <div class="card shadow border-0 h-100">
 
-                <h4>Manage Teachers</h4>
+                <div class="card-body text-center p-4">
 
-                <a href="/add-teacher" class="btn btn-primary">
+                    <i class="bi bi-person-plus-fill display-4 text-success"></i>
 
-                    Open
+                    <h4 class="fw-bold mt-3">
+                        Add Teacher
+                    </h4>
 
-                </a>
+                    <p class="text-muted">
+                        Create a teacher account for CampusConnect.
+                    </p>
 
-            </div>
+                    <a href="/add-teacher"
+                       class="btn btn-success w-100">
 
-        </div>
+                        <i class="bi bi-person-plus"></i>
+                        Add Teacher
 
-        <div class="col-md-4">
+                    </a>
 
-            <div class="card shadow text-center p-4">
-
-                <h3>📢</h3>
-
-                <h4>Announcements</h4>
-
-                <a href="/announcements" class="btn btn-success">
-
-                    Open
-
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="col-md-4">
 
-            <div class="card shadow text-center p-4">
+        <!-- Manage Users -->
+        <div class="col-md-6 col-lg-4">
 
-                <h3>📅</h3>
+            <div class="card shadow border-0 h-100">
 
-                <h4>Manage Events</h4>
+                <div class="card-body text-center p-4">
 
-                <a href="/events" class="btn btn-warning">
+                    <i class="bi bi-people-fill display-4 text-primary"></i>
 
-                    Open
+                    <h4 class="fw-bold mt-3">
+                        Manage Users
+                    </h4>
 
-                </a>
+                    <p class="text-muted">
+                        View and manage student and teacher accounts.
+                    </p>
+
+                    <a href="/manage-users"
+                       class="btn btn-primary w-100">
+
+                        <i class="bi bi-people"></i>
+                        Manage Users
+
+                    </a>
+
+                </div>
 
             </div>
 
         </div>
+
+
+        <!-- Announcements -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-megaphone-fill display-4 text-danger"></i>
+
+                    <h4 class="fw-bold mt-3">
+                        Announcements
+                    </h4>
+
+                    <p class="text-muted">
+                        Post important campus announcements.
+                    </p>
+
+                    <a href="/add-announcement"
+                       class="btn btn-danger w-100">
+
+                        <i class="bi bi-plus-circle"></i>
+                        New Announcement
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Events -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-calendar-event display-4 text-warning"></i>
+
+                    <h4 class="fw-bold mt-3">
+                        Events
+                    </h4>
+
+                    <p class="text-muted">
+                        Manage campus events.
+                    </p>
+
+                    <a href="/events"
+                       class="btn btn-warning w-100">
+
+                        <i class="bi bi-calendar-event"></i>
+                        Manage Events
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Discussions -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-chat-dots-fill display-4 text-info"></i>
+
+                    <h4 class="fw-bold mt-3">
+                        Discussions
+                    </h4>
+
+                    <p class="text-muted">
+                        View and manage campus discussions.
+                    </p>
+
+                    <a href="/discussions"
+                       class="btn btn-info w-100">
+
+                        <i class="bi bi-chat-dots"></i>
+                        Discussions
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Notes -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i class="bi bi-journal-text display-4 text-secondary"></i>
+
+                    <h4 class="fw-bold mt-3">
+                        Study Notes
+                    </h4>
+
+                    <p class="text-muted">
+                        View uploaded study materials.
+                    </p>
+
+                    <a href="/notes"
+                       class="btn btn-secondary w-100">
+
+                        <i class="bi bi-journal-text"></i>
+                        View Notes
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Back to Dashboard -->
+    <div class="text-center mt-5">
+
+        <a href="/dashboard"
+           class="btn btn-outline-secondary">
+
+            ← Back to Dashboard
+
+        </a>
 
     </div>
 

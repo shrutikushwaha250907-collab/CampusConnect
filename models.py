@@ -109,3 +109,21 @@ class EventRegistration(db.Model):
     event_id = db.Column(db.Integer, nullable=False)
 
     student = db.Column(db.String(100), nullable=False)
+
+# ---------------- DISCUSSIONS ----------------
+
+class Discussion(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    title = db.Column(db.String(150), nullable=False)
+
+    question = db.Column(db.Text, nullable=False)
+
+    asked_by = db.Column(db.String(100), nullable=False)
+
+    reply = db.Column(db.Text, default="")
+
+    replied_by = db.Column(db.String(100), default="")
+
+

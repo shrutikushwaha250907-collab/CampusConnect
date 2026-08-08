@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Ask Question{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center mb-4">
+
+                        💬 Ask a Question
+
+                    </h2>
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+
+                                Title
+
+                            </label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                Question
+
+                            </label>
+
+                            <textarea
+                                name="question"
+                                rows="6"
+                                class="form-control"
+                                required></textarea>
+
+                        </div>
+
+                        <button class="btn btn-primary w-100 btn-lg">
+
+                            Post Question
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

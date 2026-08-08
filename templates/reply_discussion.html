@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Reply{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg">
+
+                <div class="card-body p-5">
+
+                    <h2 class="mb-4">
+
+                        Reply to Student
+
+                    </h2>
+
+                    <h4>
+
+                        {{ discussion.title }}
+
+                    </h4>
+
+                    <p>
+
+                        {{ discussion.question }}
+
+                    </p>
+
+                    <hr>
+
+                    <form method="POST">
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                Your Reply
+
+                            </label>
+
+                            <textarea
+                                name="reply"
+                                rows="6"
+                                class="form-control"
+                                required></textarea>
+
+                        </div>
+
+                        <button class="btn btn-success w-100 btn-lg">
+
+                            Submit Reply
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

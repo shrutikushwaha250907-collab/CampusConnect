@@ -6,49 +6,117 @@
 
 <div class="container py-5">
 
-    <div class="row">
+    <!-- Header -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                👨‍🏫 Manage Teachers
+            </h2>
+
+            <p class="text-muted">
+                Add and view teacher accounts.
+            </p>
+
+        </div>
+
+        <a href="/admin" class="btn btn-secondary">
+
+            ← Back to Admin Dashboard
+
+        </a>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- Add Teacher -->
 
         <div class="col-lg-5">
 
-            <div class="card shadow">
+            <div class="card shadow border-0 h-100">
 
                 <div class="card-header bg-primary text-white">
 
-                    <h4>Add Teacher</h4>
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-plus-fill"></i>
+                        Add Teacher
+                    </h4>
 
                 </div>
 
-                <div class="card-body">
+
+                <div class="card-body p-4">
 
                     <form method="POST">
 
+                        <!-- Full Name -->
+
+                        <label class="form-label fw-bold">
+                            Full Name
+                        </label>
+
                         <input
                             class="form-control mb-3"
+                            type="text"
                             name="fullname"
-                            placeholder="Full Name"
+                            placeholder="Enter teacher's full name"
                             required>
+
+
+                        <!-- Email -->
+
+                        <label class="form-label fw-bold">
+                            Email
+                        </label>
 
                         <input
                             class="form-control mb-3"
                             type="email"
                             name="email"
-                            placeholder="Email"
+                            placeholder="Enter email address"
                             required>
+
+
+                        <!-- Username -->
+
+                        <label class="form-label fw-bold">
+                            Username
+                        </label>
 
                         <input
                             class="form-control mb-3"
+                            type="text"
                             name="username"
-                            placeholder="Username"
+                            placeholder="Create username"
                             required>
 
+
+                        <!-- Password -->
+
+                        <label class="form-label fw-bold">
+                            Password
+                        </label>
+
                         <input
-                            class="form-control mb-3"
+                            class="form-control mb-4"
                             type="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="Create password"
                             required>
 
-                        <button class="btn btn-primary w-100">
+
+                        <!-- Submit -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100">
+
+                            <i class="bi bi-person-plus"></i>
 
                             Add Teacher
 
@@ -62,45 +130,96 @@
 
         </div>
 
+
+        <!-- Teachers List -->
+
         <div class="col-lg-7">
 
-            <div class="card shadow">
+            <div class="card shadow border-0">
 
                 <div class="card-header bg-success text-white">
 
-                    <h4>Teachers</h4>
+                    <h4 class="mb-0">
+
+                        <i class="bi bi-people-fill"></i>
+
+                        Teachers
+
+                    </h4>
 
                 </div>
 
+
                 <div class="card-body">
 
-                    <table class="table table-bordered">
+                    {% if teachers %}
 
-                        <tr>
+                    <div class="table-responsive">
 
-                            <th>Name</th>
+                        <table class="table table-hover align-middle">
 
-                            <th>Username</th>
+                            <thead class="table-light">
 
-                            <th>Email</th>
+                                <tr>
 
-                        </tr>
+                                    <th>Name</th>
 
-                        {% for teacher in teachers %}
+                                    <th>Username</th>
 
-                        <tr>
+                                    <th>Email</th>
 
-                            <td>{{ teacher.fullname }}</td>
+                                </tr>
 
-                            <td>{{ teacher.username }}</td>
+                            </thead>
 
-                            <td>{{ teacher.email }}</td>
 
-                        </tr>
+                            <tbody>
 
-                        {% endfor %}
+                                {% for teacher in teachers %}
 
-                    </table>
+                                <tr>
+
+                                    <td>
+
+                                        <strong>
+                                            {{ teacher.fullname }}
+                                        </strong>
+
+                                    </td>
+
+                                    <td>
+                                        {{ teacher.username }}
+                                    </td>
+
+                                    <td>
+                                        {{ teacher.email }}
+                                    </td>
+
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="text-center py-4">
+
+                        <i class="bi bi-person-x display-4 text-muted"></i>
+
+                        <p class="text-muted mt-3 mb-0">
+
+                            No teachers have been added yet.
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
 
                 </div>
 
